@@ -31,17 +31,23 @@ return $this->result;
 // CREATE
 public function createEmployee(){
 // sanitize
+$this->id=htmlspecialchars(strip_tags($this->id));
 $this->name=htmlspecialchars(strip_tags($this->name));
 $this->lastName=htmlspecialchars(strip_tags($this->lastName));
-$this->email=htmlspecialchars(strip_tags($this->email));
 $this->designation=htmlspecialchars(strip_tags($this->designation));
+$this->email=htmlspecialchars(strip_tags($this->email));
 $this->address=htmlspecialchars(strip_tags($this->address));
 $this->phone=htmlspecialchars(strip_tags($this->phone));
 $this->created=htmlspecialchars(strip_tags($this->created));
 $sqlQuery = "INSERT INTO
-". $this->db_table ." SET name = '".$this->name."',
+". $this->db_table ." SET id = '".$this->id."',
+name = '".$this->name."',
+lastName = '".$this->lastName."',
+designation = '".$this->designation."',
+phone = '".$this->phone."',
 email = '".$this->email."',
-designation = '".$this->designation."',created = '".$this->created."'";
+address = '".$this->address."',
+created = '".$this->created."'";
 $this->db->query($sqlQuery);
 if($this->db->affected_rows > 0){
 return true;
@@ -51,7 +57,7 @@ return false;
 
 // UPDATE
 public function getSingleEmployee(){
-$sqlQuery = "SELECT * FROM employee WHERE name = '$this->name' or id = '$this->id'";
+$sqlQuery = "SELECT * FROM employee WHERE name = '$this->name' OR id = '$this->id'";
 $record = $this->db->query($sqlQuery);
 //var_dump($record);
 //var_dump(mysqli_error($this->db));

@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
 
-    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="../css/style2.css">
 
     <title>Formulario Búsqueda</title>
 

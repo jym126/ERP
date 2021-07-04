@@ -4,16 +4,16 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Pagina de busqueda</title>
 </head>
 <body>
 <?php
 include('database.php');
-include('client.php');
-$database = new Database();
-$db = $database->getConnection();
-$item = new Employee($db);
+include('gestionClientes.php');
+$database = new DatabaseC();
+$dbC = $database->getConnection();
+$item = new Employee($dbC);
 $item->id = isset($_GET['id']) ? $_GET['id'] : die() or $item->name = isset($_GET['name']) ? $_GET['name'] : die();
 $item->getSingleEmployee();
 if ($item->name != null) {

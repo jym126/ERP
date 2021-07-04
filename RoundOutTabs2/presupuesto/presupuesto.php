@@ -3,14 +3,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Busqueda</title>
+    <title>Presupuesto</title>
 
-    <!--Script que permite al hacer click en un campo de la clase search-box hacer buscar artículos mientras se escribe-->
+    <!--Script que permite al hacer click en un campo de la clase search-box poder buscar artículos mientras se escribe-->
     <script>
         var i = 0;
         var valor = 0;
+        var iva = 0;
+        var gTotal = 0;
         $(document).ready(function () {
             $('.search-box input[type="text"]').on("keyup input", function () {
                 /* Get input value on change */
@@ -26,7 +28,7 @@
                 }
             });
 
-            // Set search input value on click of result item
+            // Al hacer clic mete en sus respectivos campos los datos almacenados en "result" como una cadena de varios datos
             $(document).on("click", ".result p", function () {
                 //La cadena capturada con los datos del nombre, id y precio se almacenan en el input con id:find
                 $(this).parents(".search-box").find('#find').val($(this).text());
@@ -40,6 +42,8 @@
                 precio = parseFloat(precio);
                 valor += precio;
                 document.getElementById('total').innerHTML = valor.toFixed(2) + "€";
+                iva = document.getElementById('iva').innerHTML = (valor*21/100).toFixed(2);
+                gTotal = document.getElementById('gTotal').innerHTML = (valor + parseFloat(iva)).toFixed(2) + "€";
                 $(this).parent(".result").empty();
             });
         });
@@ -51,9 +55,13 @@
             var nombre = document.getElementById('nombreArt' + i).value = "";
             var precio = document.getElementById('precio' + i).value = "";
             document.getElementById('total').innerHTML = "";
+            document.getElementById('iva').innerHTML = "";
+            document.getElementById('gTotal').innerHTML = "";
             $(this).parent(".result").empty();
             i = 0;
             valor = 0;
+            iva = 0;
+            gTotal = 0;
         })
     </script>
     <!--Función Desplazamiento al borrar una linea de artículos-->
@@ -78,29 +86,46 @@
             document.getElementById('nombreArt' + x).value = "";
             document.getElementById('precio' + x).value = "";
             document.getElementById('total').innerHTML = valor.toFixed(2) + "€";
+            iva = document.getElementById('iva').innerHTML = (valor*21/100).toFixed(2);
+            gTotal = document.getElementById('gTotal').innerHTML = (valor + parseFloat(iva)).toFixed(2) + "€";
             Desplazar(x);
         }
+    </script>
+
+    <!--Asignando codigo del albarán-->
+    <?php
+    include ('../albaran/calculoIndices.php');
+    ?>
+    <script>
+        var nuevoCodigo = <?php echo json_encode($nuevoCodigo);?>;
+        document.getElementById('codigo').value = nuevoCodigo;
     </script>
 
 </head>
 <body>
 <div id="clientes" class="tabcontent">
-    <br>
-    <h3>Albarán</h3>
+
+    <h2>Presupuesto</h2>
+
+    <label class="alb">Código
+        <input class="alb" id="codigo" type="text" size="7" value="">
+    </label>
 
     <div class="juegoBotones">
-        <button id="buscar"
-                onclick="window.open('cliente_buscar.php', 'Clientes', 'width=1200, height=600, top=320, left=300')"></button>
+        <button id="buscar" onclick="window.open('albaran/buscarAlbaran.php',
+        'Clientes', 'width=1200, height=600, top=320, left=300')"></button>
         <button id="imprimir" onclick="window.print()"></button>
-        <button id="guardar"></button>
+        <button id="guardar" type="submit" onclick="guardar()"></button>
+
     </div>
     <br>
     <h3>Cliente</h3>
     <div class="data">
         <label class="alb">Código</label>
-        <input class="alb" id="id" type="text" size="5"><br><br>
+        <input class="alb" id="id" type="text" size="5"><button id="buscarMini"
+                                                                onclick="window.open('cliente_buscar.php', 'Clientes', 'width=1200, height=600, top=320, left=300')"></button><br><br>
         <label class="alb">Nombre</label>
-        <input class="alb" id="name" type="text" size="20"><br><br>
+        <input class="alb" id="name" type="text" size="20">
         <label class="alb">Apellido</label>
         <input class="alb" id="apellido" type="text" size="20"><br><br>
         <label class="alb">Email</label>
@@ -109,12 +134,10 @@
         <input class="alb" id="telefono" type="text" size="10">
         <label class="alb">Dirección</label>
         <input class="alb" id="direccion" type="text" size="30">
-
         <br>
-
     </div>
-    <h3>Artículos</h3>
 
+    <h3>Artículos</h3>
 
     <div class="search-box">
         <button id="clear" type="button"></button>
@@ -176,15 +199,65 @@
         <input id="nombreArt10" class="alb" autocomplete="off" type="text" size="25">
         <input id="precio10" class="alb" type="text" size="5">
         <button id="menosMini" type="button" onclick="Eliminar(10)"></button>
-        <br><br>
-        <table>
-            <tr class="alb">
-                <td><label>Total: </label></td>
-                <td><p id="total"></p></td>
+        <br>
+        <table class="alb">
+            <tr>
+                <th style="border: 1px solid black;"><label>Base: </label></th>
+                <th style="border: 1px solid black;"><label>IVA: </label></th>
+                <th style="border: 1px solid black;"><label>Total: </label></th>
             </tr>
+            <td style="border: 1px solid black;"><p id="total"></p></td>
+            <td style="border: 1px solid black;"><p id="iva"></p></td>
+            <td style="border: 1px solid black;"><p id="gTotal"></p></td>
+
         </table>
         <!-- Input oculto solo para guardar cadena con los valores del nombre, id y precio -->
         <input id="find" type="hidden">
+
+        <form id="albaran" action="albaran/guardarAlbaran.php" method="get">
+            <input id="codigoAlb" name="codigoAlb" type="hidden">
+            <input id="codigoCliente" name="codigoCliente" type="hidden">
+            <input id="item1" name="item1" type="hidden">
+            <input id="item2" name="item2" type="hidden">
+            <input id="item3" name="item3" type="hidden">
+            <input id="item4" name="item4" type="hidden">
+            <input id="item5" name="item5" type="hidden">
+            <input id="item6" name="item6" type="hidden">
+            <input id="item7" name="item7" type="hidden">
+            <input id="item8" name="item8" type="hidden">
+            <input id="item9" name="item9" type="hidden">
+            <input id="item10" name="item10" type="hidden">
+        </form>
+
+        <script>
+            function guardar(){
+                var codigo = $('#codigo').val();
+                $('#codigoAlb').val(codigo);
+                var id = $('#id').val();
+                $('#codigoCliente').val(id);
+                var item1 = $('#codigoArt1').val();
+                $('#item1').val(item1);
+                var item2 = $('#codigoArt2').val();
+                $('#item2').val(item2);
+                var item3 = $('#codigoArt3').val();
+                $('#item3').val(item3);
+                var item4 = $('#codigoArt4').val();
+                $('#item4').val(item4);
+                var item5 = $('#codigoArt5').val();
+                $('#item5').val(item5);
+                var item6 = $('#codigoArt6').val();
+                $('#item6').val(item6);
+                var item7 = $('#codigoArt7').val();
+                $('#item7').val(item7);
+                var item8 = $('#codigoArt8').val();
+                $('#item8').val(item8);
+                var item9 = $('#codigoArt9').val();
+                $('#item9').val(item9);
+                var item10 = $('#codigoArt10').val();
+                $('#item10').val(item10);
+                document.getElementById("albaran").submit();
+            }
+        </script>
 
     </div>
 </div>

@@ -42,19 +42,19 @@
 <script>
     function openPage(a){
         if (a === 'articulos'){
-            $('#load').load('articulo.php');
+            $('#load').load('articulo/articulo.php');
         }
         else if (a === 'albaranes'){
-            $('#load').load('albaran.php');
+            $('#load').load('albaran/albaran.php');
         }
         else if (a === 'facturas'){
-            $('#load').load('factura.php');
+            $('#load').load('factura/factura.php');
         }
         else if (a === 'presupuestos'){
-            $('#load').load('presupuesto.php');
+            $('#load').load('presupuesto/presupuesto.php');
         }
         else if (a === 'clientes'){
-            $('#load').load('clientes.php');
+            $('#load').load('cliente/clientes.php');
         }
     }
     document.getElementById("defaultOpen").click();

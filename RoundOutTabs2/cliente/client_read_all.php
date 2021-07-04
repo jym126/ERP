@@ -4,16 +4,16 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <title>Pagina de busqueda</title>
 </head>
 <body>
 <?php
 include 'database.php';
-include 'client.php';
-$database = new Database();
-$db = $database->getConnection();
-$items = new Employee($db);
+include 'gestionClientes.php';
+$database = new DatabaseC();
+$dbC = $database->getConnection();
+$items = new Employee($dbC);
 $records = $items->getEmployees();
 $itemCount = $records->num_rows;
 

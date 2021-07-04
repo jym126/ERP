@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>Busqueda</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script>
         $(document).ready(function(){
             $('.search-box input[type="text"]').on("keyup input", function(){
@@ -51,10 +51,11 @@
     <h3>Artículos</h3>
     <p>Gestión de artículos</p>
     <div class="juegoBotones">
+        <!--Al buscar el articulo borro la imagen previa y se lanza una pagina de busqueda flotante-->
         <button id="buscar"
                 onclick="document.getElementById('imagen').value = '';
                 imagen();
-                window.open('articulos_buscar.php', 'Artículos', 'width=1200, height=600, top=320, left=300')
+                window.open('articulo/articulos_buscar.php', 'Artículos', 'width=1200, height=600, top=320, left=300')
                 "></button>
         <button id="mas"></button>
         <button id="menos"></button>

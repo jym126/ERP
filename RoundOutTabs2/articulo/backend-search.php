@@ -33,7 +33,7 @@ if(isset($_REQUEST["term"])){
                 echo "<p>No hay coincidencias</p>";
             }
         } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+            echo "ERROR: No puede ser ejecutado $sql. " . mysqli_error($link);
         }
     }
      

@@ -2,7 +2,7 @@
 //conexion por procedimiento
 //establecemos los datos de conexion almacenandolos en variable
 $db_host = "localhost";
-$db_nombreDB = "productos";
+$db_nombreDB = "albaranes";
 $db_usuario = "jym126";
 $db_contrasena = "sherimarlen1";
 

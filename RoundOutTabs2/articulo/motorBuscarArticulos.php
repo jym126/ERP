@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>Búsqueda</title>
 
