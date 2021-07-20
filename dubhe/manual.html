@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manual de uso</title>
+
+  <link rel='stylesheet' href='css/style.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+</head>
+<body>
+<div class="tabcontent">
+  <!--Navigation bar-->
+  <div id="main-nav"></div>
+
+  <script>
+    $(function () {
+      $("#main-nav").load("navbar.php");
+    });
+  </script>
+  <!--end of Navigation bar-->
+  <br>
+  <h3>Instrucciones de uso de la aplicacion Dubhe</h3>
+  <div>
+    <a>Para acceder a la aplicacion se debe iniciar seccion como usuario registrado.
+    en la pantalla inicial podrá introducir su nombre de usuario y contraseña proporcionado por el administrador del sistema.</a><br><br>
+  </div>
+  <img src="imagenes/manual/sesion.jpg" alt=""><br><br>
+  <div>
+  <a>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  </a><br><br>
+  </div>
+  <img src="imagenes/manual/inicio.jpg"><br><br>
+  <button class="btn btn-success pull-left" type="button" name="back" onclick="window.close()" style="margin-left: 10px">Volver</button><br><br>
+</div>
+</body>
+</html>

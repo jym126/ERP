@@ -1,0 +1,661 @@
+* { margin: 0; padding: 0; }
+body { font: 14px Georgia, serif;
+		/*background: rgb(197, 208, 243);*/
+	    background: #7f9cc6;
+ }
+
+h1 {
+	text-align: center;
+	margin: 0 auto;
+	padding: 20px 0;
+	color: #222;
+}
+h3{
+	clear: left;
+}
+a{
+	margin: 5px;
+	font-weight: bold;
+}
+
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1;
+}
+.tabrow {
+	text-align: left;
+	list-style: none;
+	margin: 0 0 2px;
+	line-height: 24px;
+	width: 69%;
+	height: 26px;
+	overflow: hidden;
+	font-size: 18px;
+	font-family: verdana, serif;
+	position: relative;
+	margin-left: 11%;
+}
+.tabrow li {
+	border: 1px solid #AAA;
+	background: #D1D1D1;
+	background: -o-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+	background: -ms-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+	background: -moz-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+	background: -webkit-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+	background: linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+	display: inline-block;
+	position: relative;
+	z-index: 0;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 6px;
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF;
+	text-shadow: 0 1px #FFF;
+	margin: 0 -3px;
+	padding: 0 20px;
+}
+.tabrow a {
+	  color: rgb(85, 85, 85);
+	  text-decoration: none;
+}
+.tabrow li.selected {
+	background: rgb(128, 157, 252);
+	color: #333;
+	z-index: 2;
+	border-bottom-color: rgb(128, 157, 252);
+}
+.tabrow:before {
+	position: absolute;
+	content: " ";
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	border-bottom: 1px solid #AAA;
+	z-index: 1;
+}
+.tabrow li:before,
+.tabrow li:after {
+	border: 1px solid #AAA;
+	position: absolute;
+	bottom: -1px;
+	width: 5px;
+	height: 5px;
+	content: " ";
+}
+.tabrow li:before {
+	left: -6px;
+	border-bottom-right-radius: 6px;
+	border-width: 0 1px 1px 0;
+	box-shadow: 2px 2px 0 #D1D1D1;
+}
+.tabrow li:after {
+	right: -6px;
+	border-bottom-left-radius: 6px;
+	border-width: 0 0 1px 1px;
+	box-shadow: -2px 2px 0 #D1D1D1;
+}
+.tabrow li.selected:before {
+	box-shadow: 2px 2px 0 rgb(128, 157, 252);
+}
+.tabrow li.selected:after {
+	box-shadow: -2px 2px 0 rgb(128, 157, 252);
+}
+#title{
+	color: rgb(10, 10, 10);
+}
+/*Fondo general de los diferentes documentso*/
+.tabcontent{
+	background: #cddef8;
+	margin-left: 15%;
+	margin-right: 15%;
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	box-shadow: 6px 6px 20px black;
+}
+.juegoBotones{
+	margin-top: 10px;
+	width: 500px;
+}
+
+#buscar{
+	background: url(../imagenes/search.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 6px 6px 6px #999;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+  }
+
+#buscar:hover{
+	  transform: scale(1.1);
+  }
+#buscar:active {
+  box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+  transform: translateX(1px);
+  transition: all 0.1s ease 0s;
+}
+#editar{
+	background: url(../imagenes/edit2.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 6px 6px 6px #999;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+
+#editar:hover{
+	transform: scale(1.1);
+}
+#editar:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*Juego de botones pequeños*/
+/*Boton lupa pequeño*/
+#buscarMini{
+	background: url(../imagenes/searchMini.png) no-repeat;
+	background-position: center;
+	border-radius: 6px;
+	box-shadow: 3px 3px 3px #999;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	height: 20px;
+	padding: 4px 4px;
+	transition: all 0.2s ease 0s;
+	width: 20px;
+}
+#buscarMini:hover{
+	transform: scale(1.1);
+}
+#buscarMini:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*Botón de borrado pequeño*/
+#clearMini{
+	background: url(../imagenes/clearMini.png) no-repeat;
+	background-position: center;
+	border-radius: 6px;
+	box-shadow: 3px 3px 3px #999;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	height: 16px;
+	padding: 8px 5px;
+	transition: all 0.2s ease 0s;
+	width: 20px;
+}
+#clearMini:hover{
+	transform: scale(1.1);
+}
+#clearMini:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*Botón de eliminar pequeño*/
+#menosMini{
+	background: url(../imagenes/menosMini.png) no-repeat;
+	background-position: center;
+	border-radius: 6px;
+	box-shadow: 3px 3px 3px #999;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	height: 16px;
+	padding: 5px 5px;
+	transition: all 0.2s ease 0s;
+	width: 20px;
+}
+#menosMini:hover{
+	transform: scale(1.1);
+}
+#menosMini:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*Juego de botones normales*/
+/*Botón de añadir*/
+#mas{
+	background: url(../imagenes/mas.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+  }
+#mas:hover{
+	transform: scale(1.1);
+}
+#mas:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+  }
+#menos{
+	background: url(../imagenes/menos.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#menos:hover{
+	transform: scale(1.1);
+}
+#menos:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+#clear{
+	background: url(../imagenes/clear.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#clear:hover{
+	transform: scale(1.1);
+}
+#clear:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+  /*Boton imprimir*/
+#imprimir{
+	background: url(../imagenes/print.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#imprimir:hover{
+	transform: scale(1.1);
+}
+#imprimir:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+
+/*Boton enviar a factura*/
+#send{
+	background: url(../imagenes/send.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#send:hover{
+	transform: scale(1.1);
+}
+#send:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*Boton recibir de albarán*/
+#receive{
+	background: url(../imagenes/receive.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#receive:hover{
+	transform: scale(1.1);
+}
+#receive:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+
+#guardar {
+	background: url(../imagenes/save.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#guardar:hover{
+	transform: scale(1.1);
+}
+#guardar:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+#importar {
+	background: url(../imagenes/download.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#importar:hover{
+	transform: scale(1.1);
+}
+#importar:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+
+#actualizar {
+	background: url(../imagenes/update.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 32px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 40px;
+}
+#actualizar:hover{
+	transform: scale(1.1);
+}
+#actualizar:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 35px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+
+/*Juego de botones de herramientas*/
+/*usuarios*/
+#usuarios {
+	background: url(../imagenes/usuarios.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#usuarios:hover{
+	transform: scale(1.1);
+}
+#usuarios:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*configuración*/
+#config {
+	background: url(../imagenes/config2.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#config:hover{
+	transform: scale(1.1);
+}
+#config:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*idioma*/
+#idioma {
+	background: url(../imagenes/idioma.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#idioma:hover{
+	transform: scale(1.1);
+}
+#idioma:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*imprimir*/
+#imprimir2 {
+	background: url(../imagenes/imprimir2.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#imprimir2:hover{
+	transform: scale(1.1);
+}
+#imprimir2:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*diseño*/
+#diseño {
+	background: url(../imagenes/diseño.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#diseño:hover{
+	transform: scale(1.1);
+}
+#diseño:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*conversor monedas*/
+#conversor {
+	background: url(../imagenes/conversor.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#conversor:hover{
+	transform: scale(1.1);
+}
+#conversor:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*email*/
+#mail {
+	background: url(../imagenes/email.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#mail:hover{
+	transform: scale(1.1);
+}
+#mail:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*manual*/
+#manual {
+	background: url(../imagenes/manual.png) no-repeat;
+	background-position: center;
+	border-bottom: 5px solid #0045a6;
+	border-radius: 12px;
+	box-shadow: 5px 5px 5px #999;
+	color: rgb(12, 12, 12);
+	cursor: pointer;
+	height: 80px;
+	padding: 15px 10px;
+	transition: all 0.2s ease 0s;
+	width: 80px;
+}
+#manual:hover{
+	transform: scale(1.1);
+}
+#manual:active {
+	box-shadow: 2px 2px 2px #777, 0px 0px 80px 0px #00b7f8;
+	transform: translateX(1px);
+	transition: all 0.1s ease 0s;
+}
+/*Cuerpo interno de los documentos donde se encuentran los campos*/
+.data, .search-box{
+	clear: left;
+	margin-right: 10px;
+	background: #f8f6f6;
+	padding: 10px;
+	border-radius: 10px;
+	font-family: verdana, serif;
+	font-size: 14px;
+	box-shadow: 5px 4px 6px #435761;
+}
+#resultado:hover{
+  color: #00b7f8;
+  transform: scale(1.1);
+  margin-left: 60px;
+  cursor: pointer;
+}
+#resultado{
+  background-color: #FFFFFF;
+}
+#logo{
+  width: 70px;
+  position: fixed;
+  margin-left: 10%;
+  margin-bottom: 10px;
+}
+#head{
+  width: 400px;
+  margin-left: 15%;
+  color: #FFFFFF;
+}
+table{
+  border: 1px solid #000000;
+  text-align: center;
+}
+.data1, .data2{
+	background-color: #d8e6ea;
+	width: 98%;
+	padding: 10px;
+	border-radius: 10px;
+	font-family: verdana, serif;
+	font-size: 14px;
+}
+.result p:hover{
+	color: #00b7f8;
+	cursor: pointer;
+}
+
+.alb, .fac, .pre, .result{
+	font-family: verdana, serif;
+	font-size: 18px;
+}

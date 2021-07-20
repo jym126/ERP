@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Idioma</title>
+
+    <link rel='stylesheet' href='css/style.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+</head>
+<body>
+<div class="tabcontent">
+    <!--Navigation bar-->
+    <div id="main-nav"></div>
+
+    <script>
+        $(function () {
+            $("#main-nav").load("navbar.php");
+        });
+    </script>
+    <!--end of Navigation bar-->
+    <br>
+<div>
+    <label>Seleccione un idioma para Dubhe
+        <select id="colorSelector">
+            <option value="1">Español</option>
+            <option value="2">Inglés</option>
+            <option value="3">Portugués</option>
+            <option value="4">Francés</option>
+        </select>
+    </label>
+    <button id="cambiar" onclick="cambiarEstilo()">Cambiar</button>
+</div><br><br>
+    <button class="btn btn-success pull-left" type="button" name="back" onclick="window.close()" style="margin-left: 10px">Volver</button><br><br>
+</div>
+</body>
+</html>

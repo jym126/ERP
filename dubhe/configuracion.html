@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Configuracion</title>
+
+  <link rel='stylesheet' href='css/style.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+</head>
+<body>
+<div class="tabcontent">
+  <!--Navigation bar-->
+  <div id="main-nav"></div>
+
+  <script>
+    $(function () {
+      $("#main-nav").load("navbar.php");
+    });
+  </script>
+  <!--end of Navigation bar-->
+
+  <h3>Ajustes generales de Dubhe</h3><br>
+  <div>
+    <label>Opciones regionales
+      <select id="regionSelector">
+        <option value="1">Europa</option>
+        <option value="2">América</option>
+        <option value="3">Asia</option>
+        <option value="4">Australia</option>
+      </select>
+    </label>
+    <button id="cambiarR" onclick="cambiarRegion()">Aplicar</button>
+  </div><br><br>
+
+  <div>
+    <label>Sistema de medida
+      <select id="sistemaSelector">
+        <option value="1">Sistema internacional</option>
+        <option value="2">Sistema inglés</option>
+      </select>
+    </label>
+    <button id="cambiarS" onclick="cambiarSistema()">Aplicar</button>
+  </div><br><br>
+
+  <div>
+    <label>Moneda
+      <select id="monedaSelector">
+        <option value="1">Euro</option>
+        <option value="2">Dolar</option>
+        <option value="2">Libra</option>
+        <option value="2">Peso Mexicano</option>
+        <option value="2">Dolar Australiano</option>
+      </select>
+    </label>
+    <button id="cambiarS" onclick="cambiarSistema()">Aplicar</button>
+  </div>
+  <button class="btn btn-success pull-left" type="button" name="back" onclick="window.close()" style="margin-left: 10px">Volver</button><br><br>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Impresion</title>
+
+  <link rel='stylesheet' href='css/style.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+</head>
+<body>
+<div class="tabcontent">
+  <!--Navigation bar-->
+  <div id="main-nav"></div>
+
+  <script>
+    $(function () {
+      $("#main-nav").load("navbar.php");
+    });
+  </script>
+  <!--end of Navigation bar-->
+
+    <h3>Configure el formato de impresion para Dubhe</h3><br>
+  <label>Selecciona la impresora por defecto</label>
+  <button id="imprimir" onclick="window.print()"></button><br><br>
+  <div>
+    <label>Seleccione el tipo de folio
+      <select id="folioSelector">
+        <option value="1">A4</option>
+        <option value="2">A1</option>
+        <option value="3">A2</option>
+        <option value="4">A3</option>
+      </select>
+    </label>
+    <button id="cambiarF" onclick="cambiarFolio()">Aplicar</button>
+  </div><br><br>
+
+  <div>
+  <label>Seleccione el color
+    <select id="colorSelector">
+      <option value="1">Blanco/Negro</option>
+      <option value="2">Escala de grises</option>
+      <option value="3">Color</option>
+      <option value="4">Color/Ahorro</option>
+    </select>
+  </label>
+  <button id="cambiarC" onclick="cambiarColor()">Aplicar</button>
+</div>
+  <button class="btn btn-success pull-left" type="button" name="back" onclick="window.close()" style="margin-left: 10px">Volver</button><br><br>
+</div>
+</body>
+</html>
